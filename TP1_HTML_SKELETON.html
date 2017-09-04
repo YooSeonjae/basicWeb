@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>TP1 in HTML5 Skeleton</title>
+<!-- CSS, JS External 정의 -->
+<link rel="stylesheet" type="text/css" href="./css/TP1_CSS_SKELETON.css">
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<!-- 레이아웃은 HTML5 엘리먼트를 사용할 것 -->
+	<header>
+		<!-- Header (Menu bar) -->
+		<div class="Bar">
+			<button class="Menu" id="pageName" onclick="change_location();localStorage.clear()" style="cursor:pointer">C.B.T</button>
+			<button class="Menu" id="HOME" onclick="change_location()"style="cursor:pointer">HOME</button>
+
+
+
+			<button class="Menu" onclick="ImageSlide_location()" style="cursor:pointer">M o v i e</button>
+
+
+			<button class="Menu" onclick="Introduce_location()" style="cursor:pointer">INTRODUCE</button>
+			<button class="Menu" onclick="Gallery_location()" style="cursor:pointer">GALLERY</button>
+			<button class="Menu" onclick="Guestbook_location()" style="cursor:pointer">GUEST BOOK</button>
+			<button class="Menu" id = "dropmenu"onclick="dropDown()">
+   			<ul>
+     			<li class="sub-menu-parent" >
+       			<a  onclick="change_img()"><img id="menu_icon" src="./img/menu_icon.jpg"></a>
+       			<ul class="sub-menu" id = "drop">
+         			<li><a onclick="change_location()">HOME</a></li>
+         			<li><a onclick="ImageSlide_location()">M o v i e</a></li>
+         			<li><a onclick="Introduce_location()">INTRODUCE</a></li>
+         			<li><a onclick="Gallery_location()">GALLERY</a></li>
+							<li><a onclick="Guestbook_location()">GUEST BOOK</a></li>
+       			</ul>
+     			</li>
+		  	</ul>
+			</button>
+		</div>
+	</header>
+
+	<main>
+		<!--- /*이미지슬라이드*/ -->
+		<div class = "ImageSlide" id="ImageSlide">
+			<div id="Background" >
+		 		<img id="back_image" class="back" src="./img/img00.jpg"></img>
+		 		<img id="back_next_image" class="back"></img>
+
+		 		<button id = "prev-button" onclick = "prev_image()"><img src = "./img/slide_button/left.gif"></button>
+		 		<button id = "next-button" onclick = "next_image()"><img src = "./img/slide_button/right.gif"></button>
+		 		<div id = "image-where">
+			 		<input type = "button" value = " " id = "Dot0" onclick = "get_image(0)">
+			 		<input type = "button" value = " " id = "Dot1" onclick = "get_image(1)">
+			 		<input type = "button" value = " " id = "Dot2" onclick = "get_image(2)">
+			 		<input type = "button" value = " " id = "Dot3" onclick = "get_image(3)">
+			 		<input type = "button" value = " " id = "Dot4" onclick = "get_image(4)">
+		 		</div>
+			</div>
+		</div>
+<!--- /*소개*/ -->
+		<div class = "Introduce" id="Introduce"><p>introduce</p>
+			<br>
+			<table>
+  			<thead>
+    			<tr>
+      			<th colspan="3"><h1>Cinema By Time</h1>(시간 검색으로 알아보는
+							<br>대전 영화관들의 상영시간표)
+							<br>
+						</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+    			<tr>
+      			<td><img src = "./img/int1.jpg"></td>
+      			<td><div>제가 최종 텀프로젝트에서 만들 Web은 <strong>C.B.T(Cinema By Time)</strong>입니다. <br>이 Web은 시간을 검색하고 그 시간에 맞는 모든 대전 영화관들의 상영시간표를 알려줍니다.</div>
+								</td>
+    			</tr>
+					<tr>
+						<td><p>왼쪽 차트(연도별 총 관객 수)에서 볼 수 있드시 영화를 관람하는 수는 점점 증가하고 있습니다.</p>
+								<br>
+								<a>└>따라서 현재 사람들이 영화를 보기 위한 여러 다양한 서비스가 제공되고 있습니다. </a>
+						</td>
+      			<td>
+							<p id = "peoplenum">관객수(단위 : 만)</p>
+							<canvas id = "movieChart" width="400px" height="150px"></canvas>
+							<p id = "source">출처 : 영화진흥위원회(KOFIC)</p>
+						</td>
+    			</tr>
+					<tr>
+						<td ><img src = "./img/int3.jpg"></td>
+      			<td id ="topic">시간 검색을 통해 모든 영화관의 상영시간표를 알 수 있어 더욱 더 편리하게 영화 상영을 할 수 있습니다.</td>
+    			</tr>
+  			</tbody>
+				<tfoot>
+    			<tr>
+      			<td colspan="3">C.B.T는 시간 검색만으로 한번에 대전 영화관들의 모든 상영시간표를 알 수 있습니다.</td>
+    			</tr>
+  			</tfoot>
+			</table>
+		</div>
+
+<!--- /*갤러리*/ -->
+		<div class = "Gallery" id="Galleryid"><p>gallery</p>
+			<table>
+				<tr>
+					<td>
+						<div class="onegallery">
+							<div class="xpicture" id="gallery1_child" onclick="remove(this.id);deleteModal('modal1')"><img src = "./img/modal_button/x.png"></div>
+							<div class ="galleryimg" onclick="openModal(1)"><img src="./img/gallery1.jpg"></div>
+							<div class ="gallery_Name">
+								<div class ="gallery_name" onclick="openModal(1)">Guardians of the Galaxy Vol.2</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="onegallery">
+							<div class="xpicture " id="gallery2_child" onclick="remove(this.id);deleteModal('modal2')"><img src = "./img/modal_button/x.png"></div>
+							<div class ="galleryimg"  onclick="openModal(2)"><img src="./img/gallery2.jpg"></div>
+							<div class ="gallery_Name">
+								<div class ="gallery_name" onclick="openModal(2)">임금님의 사건수첩</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="onegallery">
+							<div class="xpicture " id="gallery3_child" onclick="remove(this.id);deleteModal('modal3')"><img src = "./img/modal_button/x.png"></div>
+							<div class ="galleryimg"  onclick="openModal(3)"><img src="./img/gallery3.jpg"></div>
+							<div class ="gallery_Name">
+								<div class ="gallery_name" onclick="openModal(3)">미녀와 야수</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="onegallery">
+							<div class="xpicture " id="gallery4_child" onclick="remove(this.id);deleteModal('modal4')"><img src = "./img/modal_button/x.png"></div>
+							<div class ="galleryimg"  onclick="openModal(4)"><img src="./img/gallery4.jpg"></div>
+							<div class ="gallery_Name">
+								<div class ="gallery_name" onclick="openModal(4)">특별시민</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		<!--- /*모달창*/ -->
+			<div id="myModal" class="modal" >
+				<div class= "oneModal">
+  				<div class="modal-content" id = "modal1" onclick="closeModal()">
+    				<div class="modelSlides gallery1" >
+      				<img src="./img/gallery1.jpg">
+						</div>
+    			</div>
+				</div>
+				<div class= "oneModal">
+					<div class="modal-content" id = "modal2"onclick="closeModal()">
+    				<div class="modelSlides gallery2" >
+      				<img src="./img/gallery2.jpg">
+    				</div>
+					</div>
+				</div>
+				<div class= "oneModal">
+					<div class="modal-content" id = "modal3"onclick="closeModal()">
+    				<div class="modelSlides gallery3" >
+      				<img src="./img/gallery3.jpg">
+    				</div>
+					</div>
+				</div>
+				<div class= "oneModal">
+					<div class="modal-content" id = "modal4"onclick="closeModal()">
+    			<div class="modelSlides gallery4" >
+      			<img src="./img/gallery4.jpg">
+    			</div>
+				</div>
+</div>
+				<a class="Modalprev" onclick="plusModal(-1)"><img src = "./img/slide_button/left.gif"></a>
+				<a class="Modalnext" onclick="plusModal(1)"><img src = "./img/slide_button/right.gif"></a>
+		</div>
+	</div>
+
+<!--- /*게스트북*/ -->
+		<div class = "Guestbook" id="Guestbook">
+			<p>guest book</p>
+			<div id = "GuestComment"></div>
+			<table>
+				<tr>
+						<td class="writerName"><pre> 작 성 자 :</pre>
+						<td class="writerName"><input id="writer_name" type="text" size="50%"></input></td>
+				</tr>
+				<tr>
+						<td class="writerText"><pre>  내 용   :</pre>
+						<td class="writerText"><input id="writer_text" type="text" size="70%"></input></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="등록하기" onclick="addComment()"></input></td>
+				</tr>
+			</table>
+		</div>
+	</main>
+<!--- /*footer*/ -->
+	<footer>
+		<p><span id="attach">CNU Computer Science & Engineering</span> <span>201302434 Yoo SeonJae</span> dbtjswo4733@naver.com</p>
+	</footer>
+
+</body>
+<script src="./js/Chart.js"></script>
+<script src="./js/term01.js"></script>
+
+</html>
